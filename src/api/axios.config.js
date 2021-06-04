@@ -1,10 +1,16 @@
 import axios from 'axios'
 
+const apis = {
+  development: 'http://localhost:4000',
+  production: 'https://coco-bambu.herokuapp.com'
+}
 
 // Configura axios para receber url base automaticamente, evitando repetição nas requisições.
 const api = axios.create({
-  baseURL: 'http://localhost:4000'
+  baseURL: apis[process.env.NODE_ENV]
 })
+
+
 
 
 // Configura api para passar o token do usuário logado automaticamente no headers.
