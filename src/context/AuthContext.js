@@ -16,6 +16,7 @@ function AuthContextComponent(props) {
     }
   }, [])
 
+
   return (
     <AuthContext.Provider value={{ userInfo, setUserInfo }}>
       {props.children}

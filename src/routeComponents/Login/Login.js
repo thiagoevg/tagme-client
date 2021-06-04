@@ -12,7 +12,6 @@ function Login() {
     password: "",
   })
 
-  console.log(state)
 
   const { userInfo, setUserInfo } = useContext(AuthContext)
   const history = useHistory()
