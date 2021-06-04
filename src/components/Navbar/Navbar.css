@@ -1,0 +1,18 @@
+.check-out:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  font-weight: 900;
+}
+
+.logo-navbar:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.search-bg {
+  background-image: url("../../images/icon-busca.png");
+  background-repeat: no-repeat;
+  background-position: 220px;
+  background-size: 20px;
+  height: 30px;
+}

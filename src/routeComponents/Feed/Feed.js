@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import api from '../../api/axios.config'
 
+import { AuthContext } from '../../context/AuthContext'
 import FeedCard from '../../components/FeedCard/FeedCard'
 import Navbar from '../../components/Navbar/Navbar'
 
@@ -33,10 +34,19 @@ function Feed() {
     setSearchWord(event.target.value)
   }
 
+
+  const { setUserInfo } = useContext(AuthContext)
+
+  // Desloga usuário
+  function checkOut() {
+    localStorage.removeItem('userInfo')
+    setUserInfo({ user: {}, token: '' })
+  }
+
   return (
     <>
-      <Navbar handleSearch={handleSearch} searchWord={searchWord} />
-      <div className="container mt-5">
+      <Navbar handleSearch={handleSearch} searchWord={searchWord} checkOut={checkOut} />
+      <div className="mx-4 mt-4">
         <h6>Receitas</h6>
         <hr />
         {filteredDishes.length !== 0 ? filteredDishes.map(dish => {

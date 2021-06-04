@@ -3,6 +3,7 @@ import { useState, useContext, useEffect } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 
 import './Login.css'
+import logo from '../../images/logo-coco-bambu.png'
 import { AuthContext } from '../../context/AuthContext'
 import api from '../../api/axios.config'
 
@@ -51,49 +52,52 @@ function Login() {
   const handleShow = () => setShow(true);
 
   return (
-    <div className='container d-flex-block col-sm-4 col-md-4 col-lg-3 my-5'>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Nome do usuário"
-            style={{ fontStyle: "italic" }}
-            id="loginFormUserName"
-            name="userName"
-            value={state.userName}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="password"
-            placeholder="Senha"
-            style={{ fontStyle: "italic" }}
-            className="form-control"
-            id="loginFormPassword"
-            name="password"
-            value={state.password}
-            onChange={handleChange}
-          />
-        </div>
+    <div className='background'>
+      <div className='container d-flex-block col-sm-4 col-md-4 col-lg-3'>
+        <img className="logo-login" src={logo} alt='logo' />
+        <form onSubmit={handleSubmit}>
+          <div className="form-group mb-3">
+            <input
+              type="text"
+              className="form-control user-bg"
+              placeholder="Nome do usuário"
+              style={{ fontStyle: "italic", fontSize: "12px", paddingLeft: "30px" }}
+              id="loginFormUserName"
+              name="userName"
+              value={state.userName}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              placeholder="Senha"
+              style={{ fontStyle: "italic", fontSize: "12px", paddingLeft: "30px" }}
+              className="form-control password-bg"
+              id="loginFormPassword"
+              name="password"
+              value={state.password}
+              onChange={handleChange}
+            />
+          </div>
 
-        <button type="submit" className="btn mt-3 container-fluid" style={{ backgroundColor: "#FF9300", color: "white" }}>
-          Acessar
+          <button type="submit" className="btn mt-3 container-fluid" style={{ backgroundColor: "#FF9300", color: "white" }}>
+            Acessar
         </button>
-      </form>
+        </form>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header>
-          <Modal.Title>Something went wrong :(</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Wrong userName or password. Please check the fields and try again!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Close
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header>
+            <Modal.Title>Acesso negado!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body><small>Por favor cheque as informações de cadastro e tente novamente.</small></Modal.Body>
+          <Modal.Footer>
+            <Button style={{ backgroundColor: "#FF9300", border: 'none' }} onClick={handleClose}>
+              Close
             </Button>
-        </Modal.Footer>
-      </Modal>
+          </Modal.Footer>
+        </Modal>
+      </div>
     </div>
   )
 }

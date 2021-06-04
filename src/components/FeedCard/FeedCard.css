@@ -10,6 +10,11 @@
   margin: 1rem 0;
 }
 
+.dot:hover {
+  transform: scale(1.1);
+}
+
 .paragraph {
   font-size: 10px;
+  color: #212429;
 }
