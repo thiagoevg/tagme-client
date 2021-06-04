@@ -6,10 +6,10 @@ import './FeedCard.css'
 function FeedCard({ dish }) {
   return (
     <>
-      <div className="d-flex my-4" style={{ border: "none" }}>
+      <div className="d-flex justify-content-between my-4" style={{ border: "none" }}>
         <div>
           <div className="d-flex justify-content-start">
-            <div className="d-flex col-3 me-3 align-middle">
+            <div className="d-flex me-3 align-middle">
               <img className="img-fluid my-auto" src={dish.small_image_url} alt={dish.dishName} />
             </div>
             <div className="d-flex align-middle col-5">
