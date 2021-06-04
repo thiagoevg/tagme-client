@@ -6,6 +6,7 @@ import { AuthContextComponent } from '../../context/AuthContext'
 import Login from '../../routeComponents/Login/Login'
 import Feed from '../../routeComponents/Feed/Feed'
 import DishDetails from '../../routeComponents/DishDetails/DishDetails'
+import Signup from '../../routeComponents/Signup/Signup'
 import ProtectedUserRoute from '../../routeComponents/ProtectedUserRoute/ProtectedUserRoute'
 
 
@@ -16,6 +17,7 @@ function App() {
         <Route exact path='/' component={Login} />
         <ProtectedUserRoute exact path='/feed' component={Feed} />
         <ProtectedUserRoute exact path='/dish/:_id' component={DishDetails} />
+        <Route exact path='/signup' component={Signup} />
       </AuthContextComponent>
     </BrowserRouter>
   );
