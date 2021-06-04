@@ -53,7 +53,6 @@ function Login() {
 
   return (
     <div className='background'>
-      <Link to='/signup'>signup</Link>
       <div className='container d-flex-block col-sm-4 col-md-4 col-lg-3'>
         <img className="logo-login" src={logo} alt='logo' />
         <form onSubmit={handleSubmit}>
