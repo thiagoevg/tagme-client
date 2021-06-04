@@ -20,11 +20,16 @@ function Feed() {
   }, [])
 
   return (
-    <div className="container mt-5">
-      {dishes.map(dish => {
-        return (<FeedCard key={dish._id} dish={dish} />)
-      })}
-    </div>)
+    <>
+      <div className="container mt-5">
+        <h6>Receitas</h6>
+        <hr />
+        {dishes.map(dish => {
+          return (<FeedCard key={dish._id} dish={dish} />)
+        })}
+      </div>
+    </>
+  )
 }
 
 export default Feed

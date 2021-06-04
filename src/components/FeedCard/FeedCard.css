@@ -1,0 +1,15 @@
+.dot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f47b20;
+  border-radius: 50px;
+  font-size: 14px;
+  height: 5em;
+  width: 5em;
+  margin: 1rem 0;
+}
+
+.paragraph {
+  font-size: 10px;
+}
