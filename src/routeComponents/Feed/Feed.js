@@ -49,6 +49,8 @@ function Feed() {
       <div className="mx-4 mt-4">
         <h6>Receitas</h6>
         <hr />
+
+
         {filteredDishes.length !== 0 ? filteredDishes.map(dish => {
           return (<FeedCard key={dish._id} dish={dish} />)
         }) : <div className="d-flex-block text-center mt-5"><small className="badge bg-secondary">O item pesquisado não consta no cardápio.</small></div>}

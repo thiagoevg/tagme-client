@@ -44,18 +44,42 @@ function DishDetails() {
         </div>
       </div>
       <div className='d-flex-block dish-title'><h1>{dish.dishName}</h1><div className='w-75'><h2>{dish.description}</h2></div></div>
-      <div className='checks mx-3'>
-        <div>
-          <h5>Ingredientes</h5>
-          <ul>
-            {dish.ingredients.map((ingredient) => <li><div class="round">
-              <input type="checkbox" id="checkbox" />
-              <label for="checkbox">{ingredient}</label>
-            </div></li>)}
-          </ul>
-        </div>
-        <div></div>
-        <div></div>
+
+      <div style={{ backgroundColor: '#FAFAFA' }} className='checks w-100'>
+        <section className='pb-2'>
+          <div className='mx-5'>
+            <h5 className='mb-3'>Ingredientes</h5>
+            <ul style={{ listStyleType: "none" }}>
+              {dish.ingredients.map((ingredient) => {
+                return (
+                  <li key={ingredient}>
+                    <div className='group'>
+                      <input type="checkbox" id={ingredient} />
+                      <label htmlFor={ingredient}><span style={{ fontSize: '13px' }}>{ingredient}</span></label>
+                    </div>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </section>
+        <section className='pt-4 pb-3' style={{ backgroundColor: 'white', height: '50px' }}>
+          <div className='mx-5'>
+            <h5 className=''>Modo de preparo</h5>
+            <ul style={{ listStyleType: "none" }}>
+              {dish.preparationSteps.map((step, idx) => {
+                return (
+                  <li key={step}>
+                    <div className='group'>
+                      <input type="checkbox" id={step} />
+                      <label htmlFor={step}><span style={{ fontSize: '13px' }}><strong>Passo {idx + 1}</strong><br />{step}</span></label>
+                    </div>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+        </section>
       </div>
 
     </>

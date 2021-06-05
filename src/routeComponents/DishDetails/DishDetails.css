@@ -44,53 +44,50 @@ h2 {
 .checks {
   position: absolute;
   top: 50vw;
-  margin-top: 20px;
+  padding-top: 20px;
 }
 
-.round {
+.group {
+  padding: 5px 10px;
+  margin: 8px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+label {
   position: relative;
-  display: flex;
 }
 
-.paragraph {
-  margin-left: 20px;
-}
-
-/* .round label {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 50%;
-  cursor: pointer;
-  height: 28px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 28px;
-}
-
-.round label:after {
-  border: 2px solid #fff;
-  border-top: none;
-  border-right: none;
+label::before {
   content: "";
-  height: 6px;
-  left: 7px;
-  opacity: 0;
+  background: url("../../images/check-circle.svg");
+  background-position: center;
+  background-size: contain;
+  width: 32px;
+  height: 32px;
   position: absolute;
-  top: 8px;
-  transform: rotate(-45deg);
-  width: 12px;
+  left: -45px;
+  top: -4px;
+  z-index: 100;
+
+  transform: scale(0) rotateZ(180deg);
+  transition: all 0.4s cubic-bezier(0.54, 0.01, 0, 1.49);
 }
 
-.round input[type="checkbox"] {
-  visibility: hidden;
+input[type="checkbox"]:checked + label::before {
+  transform: scale(1) rotateZ(0deg);
 }
 
-.round input[type="checkbox"]:checked + label {
-  background-color: #66bb6a;
-  border-color: #66bb6a;
+label::after {
+  content: "";
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: white;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: -42px;
+  top: -0px;
+  border-radius: 50%;
 }
-
-.round input[type="checkbox"]:checked + label:after {
-  opacity: 1;
-} */
