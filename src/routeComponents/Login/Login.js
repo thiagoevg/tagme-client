@@ -1,4 +1,4 @@
-import { useHistory, Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useState, useContext, useEffect } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 
@@ -52,7 +52,7 @@ function Login() {
   const handleShow = () => setShow(true);
 
   return (
-    <div className='background'>
+    <div className='login-background'>
       <div className='container d-flex-block col-sm-4 col-md-4 col-lg-3'>
         <img className="logo-login" src={logo} alt='logo' />
         <form onSubmit={handleSubmit}>

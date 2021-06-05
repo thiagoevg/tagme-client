@@ -1,0 +1,96 @@
+h1 {
+  color: white;
+  text-shadow: 1px 1px black;
+  font-size: 25px;
+}
+
+h2 {
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 1px black;
+  font-size: 12px;
+}
+
+.dish-title {
+  margin-top: -120px;
+  margin-left: 20px;
+}
+
+.dish-background {
+  display: flex;
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  max-width: 100vw;
+  height: 50vw;
+}
+
+.back-div {
+  background-color: black;
+  opacity: 0.5;
+  padding: 4px;
+  height: 35px;
+  border-radius: 100px;
+}
+
+.time-div {
+  background-color: white;
+  opacity: 1;
+  padding: 10px;
+  height: 65px;
+  border: 1px solid grey;
+  border-radius: 3px;
+}
+
+.checks {
+  position: absolute;
+  top: 50vw;
+  margin-top: 20px;
+}
+
+.round {
+  position: relative;
+  display: flex;
+}
+
+.paragraph {
+  margin-left: 20px;
+}
+
+/* .round label {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 28px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 28px;
+}
+
+.round label:after {
+  border: 2px solid #fff;
+  border-top: none;
+  border-right: none;
+  content: "";
+  height: 6px;
+  left: 7px;
+  opacity: 0;
+  position: absolute;
+  top: 8px;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+
+.round input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.round input[type="checkbox"]:checked + label {
+  background-color: #66bb6a;
+  border-color: #66bb6a;
+}
+
+.round input[type="checkbox"]:checked + label:after {
+  opacity: 1;
+} */

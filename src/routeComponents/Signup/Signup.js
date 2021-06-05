@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import api from '../../api/axios.config'
 
 
@@ -9,6 +10,8 @@ function Signup() {
     password: ""
   })
 
+  const history = useHistory()
+
   function handleChange(event) {
     setState({ ...state, [event.target.name]: event.target.value })
   }
@@ -16,10 +19,8 @@ function Signup() {
   async function handleSubmit(event) {
     event.preventDefault();
     try {
-      const response = await api.post('/signup', { ...state })
-
-      console.log(response.data)
-
+      await api.post('/signup', { ...state })
+      history.push('/')
     } catch (err) {
       console.error(err)
     }
