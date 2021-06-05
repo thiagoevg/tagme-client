@@ -8,6 +8,8 @@ import timeIcon from '../../images/icon-time.png'
 
 
 function DishDetails() {
+
+  // Dados do prato selecionado
   const [dish, setDish] = useState({
     dishName: "",
     description: "",
@@ -19,8 +21,15 @@ function DishDetails() {
     big_image_url: ""
   })
 
+  // Ingredientes selecionados pelo usuário
+  const [seletectedIngredients, setSelectedIngredients] = useState([])
+  // Constata se todos os ingredientes da lista foram devidamente selecionados
+  const [hasAllIngredients, setHasAllIngredients] = useState(false)
+
+  // Resgata id da receita selecionada do URL
   const { _id } = useParams()
 
+  // Busca dados da receita seleciona na primeira renderização
   useEffect(() => {
     async function fetchDish() {
       try {
@@ -34,6 +43,23 @@ function DishDetails() {
   }, [_id])
 
 
+  // Sempre que a lista dos ingredientes selecionados for modificada, verifica se todos os ingredientes foram selecionados ou não
+  useEffect(() => {
+    if (seletectedIngredients.length === dish.ingredients.length) {
+      setHasAllIngredients(true)
+    } else if (hasAllIngredients === true) {
+      setHasAllIngredients(false)
+    }
+  }, [seletectedIngredients, hasAllIngredients, dish])
+
+  // Adiciona ou remove o ingrediente selecionado na array seletectedIngredients
+  function handleClick(event) {
+    if (!seletectedIngredients.includes(event.target.name)) {
+      setSelectedIngredients([...seletectedIngredients, event.target.name])
+    } else {
+      setSelectedIngredients(seletectedIngredients.filter(ingredient => ingredient !== event.target.name))
+    }
+  }
 
   return (
     <>
@@ -54,7 +80,7 @@ function DishDetails() {
                 return (
                   <li key={ingredient}>
                     <div className='group'>
-                      <input type="checkbox" id={ingredient} />
+                      <input type="checkbox" id={ingredient} name={ingredient} onChange={handleClick} />
                       <label htmlFor={ingredient}><span style={{ fontSize: '13px' }}>{ingredient}</span></label>
                     </div>
                   </li>
@@ -65,7 +91,7 @@ function DishDetails() {
         </section>
         <section className='pt-4 pb-3' style={{ backgroundColor: 'white', height: '50px' }}>
           <div className='mx-5'>
-            <h5 className=''>Modo de preparo</h5>
+            <h5>Modo de preparo</h5>
             <ul style={{ listStyleType: "none" }}>
               {dish.preparationSteps.map((step, idx) => {
                 return (
@@ -81,7 +107,6 @@ function DishDetails() {
           </div>
         </section>
       </div>
-
     </>
   )
 }
