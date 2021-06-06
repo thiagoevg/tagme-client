@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# Desafio TagMe
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Aplicativo desenvolvido em apenas 3 dias como parte do processo seletivo da empresa [TagMe](https://landing.tagme.com.br/).**
 
-## Available Scripts
+## Links de acesso
 
-In the project directory, you can run:
+**Link de acesso ao deploy:**
+https://coco-bambu.netlify.app/
 
-### `npm start`
+**Repositórios do GitHub:**
+[Client repository](https://github.com/thiagoevg/tagme-client)
+[Server repository](https://github.com/thiagoevg/tagme-server)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Login
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Para acessar o aplicativo através do deploy é necessário logar com um dos usuários cadastrados:**
 
-### `npm test`
+**Fogaça** (administrador)
+Login: fogaça
+Senha: Senha@Segura123
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Jacquin**
+Login: jacquin
+Senha: Senha@Segura123
 
-### `npm run build`
+# Informações técnicas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Seção destinada para informações técnicas gerais.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Back-end
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Desenvolvido em Node.js, a construção da API se alicerçou nas seguintes dependências:**
 
-### `npm run eject`
+**mongoose:** Dependência utilizada para a criação dos Schemas e para a conexão com o banco de dados utilizado (MongoDB).
+**express:** Pacote utilizado para a configuração das rotas de acesso da API.
+**cors:** Proporciona o acesso ao servidor através de outras portas especificadas.
+**bcrypt:** Dependência de criptografia, utilizada na criação do passwordHash.
+**dotenv:** Permitiu a utilização de variáveis de ambiente e a criação de uma pasta oculta para o armazenamento de informações sensíveis como senhas e chaves de acesso.
+**jsonwebtoken:** Dependência utilizada para gerar o token de autenticação do usuário no sucesso do login.
+**express-jwt:** Utilizada para a verificação do token do usuário no acesso de rotas protegidas (isAuthenticated middleware).
+**cloudinary:** Pacote utilizado para o upload de images.
+**multer:** Possibilita que o banco receba um arquivo do tipo file durante o processo de upload de imagem.
+**multer-storage-cloudinary:** Estabelece a conexão entre o cloudinary e o multer.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Segurança
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Por questões de sigilo comercial, todas as rotas da API são protegidas para o acesso exclusivo de usuários autenticados.
+Nessas rotas é feita a checagem do token enviado no headers da requisição. Caso o usuário não possua um token válido, o acesso será negado.
+O token emitido no sucesso do login expira em 8hrs, permitindo que o usuário permaneça logado durante esse intervalo.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Extra**
+Apesar de não serem utilizadas explicitamente nessa aplicação, a API também suporta rotas para a criação, edição e remoção de pratos e usuários (com suporte para upload de imagens), permitindo uma maior versatilidade para desenvolvimentos futuros do aplicativo. Por questões de segurança, as rotas citadas anteriormente são de acesso exclusivo para usuários com papel de administrador.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Observação
 
-## Learn More
+**A página contendo as variáveis de ambiente (.env) não está disponível no repositório por conter chaves de acesso pessoais, que, por segurança, não devem ser publicadas. Para executar o código em um novo ambiente é necessário reconfigurar essas variáveis. Qualquer dúvida nessa etapa, estou disponível para contato através do [LinkedIn](https://www.linkedin.com/in/thiagoevg/).**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Deploy
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**-Plataforma utilizada para o deploy do banco de dados:**
+[MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+**-Plataforma utilizada para o deploy do servidor:**
+[Heroku](https://id.heroku.com/)
 
-### Code Splitting
+# Front-end
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Desenvolvido em Node.js, a construção do front-end se alicerçou nas seguintes dependências:**
 
-### Analyzing the Bundle Size
+**axios:** Pacote utilizado para a comunicação com as rotas do servidor, permitindo o consumo das informações provenientes da API.
+**react:** Biblioteca utilizada para o desenvolvimento da interface de interação com o usuário (Single Page Application). Evita o recarregamento da página inteira, melhorando a performance do aplicativo.
+**react-dom:** Proporciona a renderização do aplicativo react através do método DOM render.
+**react-router-dom:** Permite a criação das rotas do react, definindo quais componentes serão renderizados com base no url.
+**react-scripts:** Pacote com conjunto de scripts para a configuração base do React.
+**bootstrap:** Biblioteca de estilos CSS utilizada como suporte adicional para criação dos estilos da página.
+**react-bootstrap:** Biblioteca de componentes com estilo bootstrap adaptados ao React.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Segurança
 
-### Making a Progressive Web App
+De maneira similar como foi realizado no servidor, apenas usuários autenticados podem acessar rotas específicas do React, evitando a exposição de dados sigilosos para usuários sem o token de autenticação.
+Para a realização dessa autenticação foi utilizado o conceito de state global, aonde as informações do usuário logado (contendo o token) são armazenadas.
+Para o acesso de uma rota protegida, o componente personalizado extraí a informação do token do state global através do hook useContext, verificando se o usuário possuiu o privilégio de acesso para aquele componente. Caso o acesso seja negado, o usuário é então automaticamente reencaminhado para a home-page, evitando-se o vazamento de informações sigilosas.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Extra 1**
+Além de componentes de acesso específico para o usuário logado, também foi desenvolvido um componente customizado exclusivamente para o acesso do administrador, permitindo a expansão futura das funcionalidades do aplicativo.
 
-### Advanced Configuration
+**Extra 2**
+Os dados do usuário logado além de ser armazenado no state global, também é armazenado no localStorage, evitando-se a queda do login mesmo para situações em que o navegador seja fechado. Desse modo, uma vez efetuado, o login persistirá até a expiração do token, ou a realização do checkout (sair), proporcionando uma melhor experiência ao usuário.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Deploy
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**-Plataforma utilizada para o deploy do front-end:**
+[Netlifly](https://www.netlify.com/)
