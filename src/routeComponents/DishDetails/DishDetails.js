@@ -88,7 +88,7 @@ function DishDetails() {
 
   // Quando o usuário clica para finalizar, verifica se todos os ingredientes e etapas foram devidamente selecionados e retorna um modal de sucesso ou de falha
   function handleFinish() {
-    if (hasAllIngredients && seletectedSteps) {
+    if (hasAllIngredients && hasAllSteps) {
       handleShowSuccess()
     } else {
       handleShowFail()
@@ -177,7 +177,7 @@ function DishDetails() {
         <Modal.Header>
           <Modal.Title>Prato finalizado com sucesso!</Modal.Title>
         </Modal.Header>
-        <Modal.Body><small>Todas as estapas foram cumpridas e o prato foi finalizado com Successo!</small></Modal.Body>
+        <Modal.Body><small>Todas as etapas foram devidamente cumpridas e o prato foi finalizado com Successo!</small></Modal.Body>
         <Modal.Footer>
           <Button style={{ backgroundColor: "#27ae60", border: 'none' }} onClick={handleCloseSuccess}>
             Finalizar
