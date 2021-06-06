@@ -52,15 +52,15 @@ h2 {
   margin: 8px;
 }
 
-input[type="checkbox"] {
+.group input[type="checkbox"] {
   display: none;
 }
 
-label {
+.group label {
   position: relative;
 }
 
-label::before {
+.group label::before {
   content: "";
   background: url("../../images/check-circle.svg");
   background-position: center;
@@ -76,11 +76,11 @@ label::before {
   transition: all 0.4s cubic-bezier(0.54, 0.01, 0, 1.49);
 }
 
-input[type="checkbox"]:checked + label::before {
+.group input[type="checkbox"]:checked + label::before {
   transform: scale(1) rotateZ(0deg);
 }
 
-label::after {
+.group label::after {
   content: "";
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-color: white;
