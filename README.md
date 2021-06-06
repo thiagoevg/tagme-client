@@ -8,7 +8,7 @@
 https://coco-bambu.netlify.app/
 
 **Repositórios do GitHub:**\
-[Client repository](https://github.com/thiagoevg/tagme-client)
+[Client repository](https://github.com/thiagoevg/tagme-client)\
 [Server repository](https://github.com/thiagoevg/tagme-server)
 
 ## Login
